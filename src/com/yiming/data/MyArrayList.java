@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class MyArrayList<E> implements Iterator<E> {
+public class MyArrayList<E> implements Iterator<E> ,MyList<E>{
 
     private static final int INIT_CAPACITY =5;
 
@@ -62,6 +62,7 @@ public class MyArrayList<E> implements Iterator<E> {
     public Boolean isEmpty(){
         return size==0;
     }
+
 
     //移除
     public E remove(int index){
