@@ -1,11 +1,12 @@
 package com.yiming.data;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class MyArrayList<E> implements Iterator<E> {
 
-    private static final int INIT_CAPACITY =10;
+    private static final int INIT_CAPACITY =5;
 
     private int size;
 
@@ -47,7 +48,7 @@ public class MyArrayList<E> implements Iterator<E> {
 
     //集合扩容
     public void ensureCapacity(int newCapacity){
-        if(size<newCapacity){
+        if(size>newCapacity){
             return;
         }
         E[]old=element;
@@ -65,8 +66,8 @@ public class MyArrayList<E> implements Iterator<E> {
     //移除
     public E remove(int index){
         E removeElement=element[index];
-        for(int i=index;i<size;index++){
-            element[i]=element[i+1];
+        for(int i=index+1;i<=size;i++){
+            element[i-1]=element[i];
         }
         size--;
         return removeElement;
@@ -76,10 +77,10 @@ public class MyArrayList<E> implements Iterator<E> {
         if(size==element.length){
             ensureCapacity(2*size+1);
         }
-        element[index]=addElement;
-        for(int i=size;i>index;i--){
+        for(int i=size-1;i>=index;i--){
             element[i+1]=element[i];
         }
+        element[index]=addElement;
         size++;
     }
 
@@ -118,4 +119,11 @@ public class MyArrayList<E> implements Iterator<E> {
         }
     }
 
+    @Override
+    public String toString() {
+        return "MyArrayList{" +
+                "size=" + size +
+                ", element=" + Arrays.toString(element) +
+                '}';
+    }
 }
