@@ -85,6 +85,11 @@ public class MyArrayList<E> implements Iterator<E> ,MyList<E>{
         size++;
     }
 
+    public Boolean add(E addElement){
+        add(size(),addElement);
+        return true;
+    }
+
 
     @Override
     public boolean hasNext() {

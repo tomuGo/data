@@ -8,7 +8,7 @@ public interface MyList<E> {
 
     E remove(int index);
 
-    void add(int index,E e);
+    Boolean add(E e);
 
     E get(int index);
 
